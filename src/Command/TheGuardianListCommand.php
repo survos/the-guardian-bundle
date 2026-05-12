@@ -11,14 +11,13 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand('guardian:list', 'list the-guardian sources and articles (various endpoints)')]
-final class TheGuardianListCommand extends Command
+final class TheGuardianListCommand
 {
 
     public function __construct(
         private readonly TheGuardianService $theGuardianService,
     )
     {
-        parent::__construct();
     }
 
     public function __invoke(
@@ -48,7 +47,7 @@ final class TheGuardianListCommand extends Command
             }
             $table->render();
         }
-        return self::SUCCESS;
+        return Command::SUCCESS;
 
     }
 
