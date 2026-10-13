@@ -1,25 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 /** generated from /home/tac/g/survos/survos/vendor/survos/maker-bundle/templates/skeleton/bundle/src/Bundle.tpl.php */
 
 namespace Survos\TheGuardianBundle;
 
+use Survos\SimpleDatatables\SurvosSimpleDatatablesBundle;
 use Survos\TheGuardianBundle\Command\TheGuardianListCommand;
 use Survos\TheGuardianBundle\Controller\TheGuardianController;
 use Survos\TheGuardianBundle\Service\TheGuardianService;
 use Survos\TheGuardianBundle\Twig\TwigExtension;
-use Survos\SimpleDatatables\SurvosSimpleDatatablesBundle;
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class SurvosTheGuardianBundle extends AbstractBundle
 {
-
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         // get all bundles https://symfony.com/doc/current/bundles/prepend_extension.html
@@ -48,11 +46,11 @@ class SurvosTheGuardianBundle extends AbstractBundle
             ;
         }
 
-//        // twig classes, for the-guardian_url ?
-//        $builder
-//            ->autowire('survos.the-guardian_twig', TwigExtension::class)
-//            ->setAutoconfigured(true)
-//            ->addTag('twig.extension');
+        //        // twig classes, for the-guardian_url ?
+        //        $builder
+        //            ->autowire('survos.the-guardian_twig', TwigExtension::class)
+        //            ->setAutoconfigured(true)
+        //            ->addTag('twig.extension');
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -66,7 +64,5 @@ class SurvosTheGuardianBundle extends AbstractBundle
 //                ->scalarNode('readonly_password')->defaultValue(null)->end()
 //                ->scalarNode('password')->defaultValue(null)->end()
             ->end();
-
     }
-
 }

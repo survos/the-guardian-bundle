@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Survos\TheGuardianBundle\Command;
 
 use Survos\TheGuardianBundle\Service\TheGuardianService;
@@ -13,22 +15,18 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 #[AsCommand('guardian:list', 'list the-guardian sources and articles (various endpoints)')]
 final class TheGuardianListCommand
 {
-
     public function __construct(
         private readonly TheGuardianService $theGuardianService,
-    )
-    {
+    ) {
     }
 
     public function __invoke(
         SymfonyStyle $io,
-        #[Argument(description: 'endpoint (source, search)')] string        $endpoint='',
+        #[Argument(description: 'endpoint (source, search)')] string $endpoint = '',
         #[Option(description: 'filter by top')] bool $top = false,
-        #[Option(description: 'search string')] ?string $q=null,
-        #[Option(description: '2-letter language code')] string $locale='en',
-
-    ): int
-    {
+        #[Option(description: 'search string')] ?string $q = null,
+        #[Option(description: '2-letter language code')] string $locale = 'en',
+    ): int {
         if ($q) {
             $query = $this->theGuardianService->contentApi()
                 ->setQuery($q);
@@ -47,11 +45,7 @@ final class TheGuardianListCommand
             }
             $table->render();
         }
+
         return Command::SUCCESS;
-
     }
-
-
-
-
 }
